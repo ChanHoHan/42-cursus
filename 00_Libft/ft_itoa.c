@@ -6,16 +6,16 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 22:17:02 by chan              #+#    #+#             */
-/*   Updated: 2021/01/02 13:52:22 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 10:42:06 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*g_b;
-int		g_sign;
+char		*g_b;
+int			g_sign;
 
-static int		is_quo_zero(int quo)
+static int	is_quo_zero(int quo)
 {
 	if (!quo)
 		return (1);
@@ -24,7 +24,7 @@ static int		is_quo_zero(int quo)
 	return (0);
 }
 
-static int		cal_len(int quo)
+static int	cal_len(int quo)
 {
 	int	size;
 
@@ -38,7 +38,7 @@ static int		cal_len(int quo)
 	return (size);
 }
 
-static int		make_arr(int size, int depth, int quo, int rem)
+static int	make_arr(int size, int depth, int quo, int rem)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ static int		make_arr(int size, int depth, int quo, int rem)
 	return (i);
 }
 
-static int		a(int n, int depth)
+static int	a(int n, int depth)
 {
 	int	quo;
 	int	rem;
@@ -82,7 +82,7 @@ static int		a(int n, int depth)
 	return (val + 1);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	g_sign = 1;
 	if (n < 0)

@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 20:35:55 by chan              #+#    #+#             */
-/*   Updated: 2021/01/03 11:18:51 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 10:39:40 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_val(int *fd, int quo, int rem)
 	ft_putchar_fd(rem + '0', *fd);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void		ft_putnbr_fd(int n, int fd)
 {
 	int	quo;
 	int	rem;

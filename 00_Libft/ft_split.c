@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:53:51 by chan              #+#    #+#             */
-/*   Updated: 2021/01/02 11:27:56 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 10:41:37 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	**input_value(char **b, char const *s, char c, size_t s_len)
 			end++;
 		if (end == begin)
 			continue ;
-		if(!(b[++i] = (char *)malloc(end - begin + 1)))
+		if (!(b[++i] = (char *)malloc(end - begin + 1)))
 		{
 			if (i != 0)
 				free_array(b, i);
@@ -75,7 +75,7 @@ static char	**input_value(char **b, char const *s, char c, size_t s_len)
 	return (b);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**b;
 	size_t	s_len;

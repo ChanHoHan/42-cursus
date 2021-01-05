@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 11:45:11 by chan              #+#    #+#             */
-/*   Updated: 2021/01/03 12:06:43 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 10:38:44 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*tmp;
-	
+
 	if (!(tmp = (t_list *)malloc(sizeof(t_list))))
 		return (NULL);
 	tmp->content = content;

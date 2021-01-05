@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 16:16:21 by chan              #+#    #+#             */
-/*   Updated: 2021/01/03 16:59:25 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 08:32:19 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!lst || !new)
 		return ;
+	new->next = *lst;
 	*lst = new;
 }
