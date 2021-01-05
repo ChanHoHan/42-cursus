@@ -6,95 +6,59 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 22:17:02 by chan              #+#    #+#             */
-/*   Updated: 2021/01/05 10:42:06 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/05 13:15:36 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*g_b;
-int			g_sign;
-
-static int	is_quo_zero(int quo)
+static int	ft_set_n(int n)
 {
-	if (!quo)
-		return (1);
-	else if (1 <= quo && quo <= 9)
-		return (2);
-	return (0);
+	n = n < 0 ? -n : n;
+	n = n < 0 ? n - 1 : n;
+	return (n);
 }
 
-static int	cal_len(int quo)
+static int	ft_intlen(int n, int sign)
 {
 	int	size;
 
-	size = 0;
-	if (is_quo_zero(quo) == 1)
-		size += 2;
-	else if (is_quo_zero(quo) == 2)
-		size += 3;
-	if (g_sign == -1)
-		size += 1;
+	size = (sign == 0) ? 2 : 1;
+	if (0 <= n && n <= 9)
+		return (++size);
+	while (n >= 1)
+	{
+		n /= 10;
+		size++;
+	}
 	return (size);
-}
-
-static int	make_arr(int size, int depth, int quo, int rem)
-{
-	int	i;
-
-	if (!(g_b = (char *)malloc(size + depth)))
-		return (0);
-	g_b[size + depth - 1] = '\0';
-	i = 0;
-	if (g_sign == -1)
-		g_b[i++] = '-';
-	if (is_quo_zero(quo) == 1)
-		g_b[i++] = rem + 48;
-	else
-	{
-		g_b[i++] = quo + 48;
-		g_b[i++] = rem + 48;
-	}
-	return (i);
-}
-
-static int	a(int n, int depth)
-{
-	int	quo;
-	int	rem;
-	int	size;
-	int	val;
-	int	tmp;
-
-	quo = n / 10;
-	rem = n % 10;
-	size = cal_len(quo);
-	if (size >= 2)
-	{
-		tmp = make_arr(size, depth, quo, rem);
-		if (!tmp)
-			return (0);
-		return (tmp);
-	}
-	if (!(val = a(quo, depth + 1)))
-		return (0);
-	g_b[val] = rem + 48;
-	return (val + 1);
 }
 
 char		*ft_itoa(int n)
 {
-	g_sign = 1;
-	if (n < 0)
-	{
-		g_sign = -g_sign;
-		n = -n;
-	}
-	if (n == -2147483648)
-		n = 2147483647;
-	if (!a(n, 0))
+	int		size;
+	int		i;
+	int		min;
+	int		sign;
+	char	*a;
+
+	min = 1;
+	min = (n == (min << 31)) ? 1 : 0;
+	sign = n < 0 ? 0 : 1;
+	n = ft_set_n(n);
+	size = ft_intlen(n, sign);
+	if (!(a = (char *)malloc(size)))
 		return (NULL);
-	if (n == 2147483647 && g_sign == -1)
-		g_b[10] += 1;
-	return (g_b);
+	if (!sign)
+		a[0] = '-';
+	a[0] = (n == 0) ? '0' : a[0];
+	a[size - 1] = '\0';
+	i = size - 2;
+	while (n >= 1)
+	{
+		a[i--] = (n % 10 + '0');
+		n /= 10;
+	}
+	a[size - 2] = min ? a[size - 2] + 1 : a[size - 2];
+	return (a);
 }
