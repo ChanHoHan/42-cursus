@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:53:51 by chan              #+#    #+#             */
-/*   Updated: 2021/01/05 10:41:37 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/06 13:29:44 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	free_array(char **b, size_t len)
 		return ;
 	while (++i < len)
 		free(b[i]);
+	free(b);
 }
 
 static char	**make_array(char const *s, char c, size_t s_len)
@@ -86,9 +87,6 @@ char		**ft_split(char const *s, char c)
 	if (!(b = make_array(s, c, s_len)))
 		return (NULL);
 	if (!(b = input_value(b, s, c, s_len)))
-	{
-		free(b);
 		return (NULL);
-	}
 	return (b);
 }
