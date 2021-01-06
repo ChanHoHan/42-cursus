@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:53:51 by chan              #+#    #+#             */
-/*   Updated: 2021/01/06 13:29:44 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/06 18:14:34 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static void	free_array(char **b, size_t len)
 	size_t	i;
 
 	i = -1;
-	if (len <= 0)
-		return ;
 	while (++i < len)
+	{
 		free(b[i]);
+		b[i] = NULL;
+	}
 	free(b);
+	b = NULL;
 }
 
 static char	**make_array(char const *s, char c, size_t s_len)
@@ -66,8 +68,7 @@ static char	**input_value(char **b, char const *s, char c, size_t s_len)
 			continue ;
 		if (!(b[++i] = (char *)malloc(end - begin + 1)))
 		{
-			if (i != 0)
-				free_array(b, i);
+			free_array(b, i);
 			return (NULL);
 		}
 		ft_strlcpy(b[i], s + begin, end - begin + 1);

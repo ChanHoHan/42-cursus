@@ -6,7 +6,7 @@
 /*   By: chhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:25:55 by chhan             #+#    #+#             */
-/*   Updated: 2020/12/31 18:45:06 by chan             ###   ########.fr       */
+/*   Updated: 2021/01/06 17:52:17 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	while (++i < n && s1_len >= s2_len + i)
 	{
 		if (*(s1 + i) == *s2 && n >= s2_len + i && \
-				(ft_memcmp(s1 + i, s2, s2_len) == 0))
+				(ft_strncmp(s1 + i, s2, s2_len) == 0))
 			return ((char *)(s1 + i));
 	}
 	return (NULL);
