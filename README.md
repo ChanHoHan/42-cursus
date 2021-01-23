@@ -1,10 +1,11 @@
 # 42-cursus
 
-# My INFO
+# My INFO 🙂
 
 ![ex_screenshot](./img/info_1.jpg)
 ![ex_screenshot](./img/info_2.jpg)
 
+last update : 23/1/21
 |Circle|Subject|Topics|Ongoing|
 |---|---|---|---|
 |내용 1|내용 2|내용 3|내용 4|
