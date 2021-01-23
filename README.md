@@ -2,7 +2,8 @@
 
 # My INFO
 
-![ex_screenshot](./img/info.jpg)
+![ex_screenshot](./img/info_1.jpg)
+![ex_screenshot](./img/info_1.jpg)
 
 |Circle|Subject|Topics|Ongoing|
 |---|---|---|---|
