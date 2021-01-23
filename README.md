@@ -1,5 +1,8 @@
 # 42-cursus
 
+My 42-cursus
+
+
 # My INFO 🙂
 
 ![ex_screenshot](./img/info_1.jpg)
