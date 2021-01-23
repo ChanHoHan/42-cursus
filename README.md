@@ -12,8 +12,7 @@ last update : 23/1/21
 
 # Project Lists
 
-|Circle|Subject|Topics|Ongoing|
+|Circle|Subject|Topics|Status|
 |---|---|---|---|
-|내용 1|내용 2|내용 3|내용 4|
-|내용 5|내용 6|내용 7|내용 8|
-|내용 9|내용 10|내용 11|내용 12|
+|0 Circle|libft|C Library|PASS|
+|1 Circle|netwat|network|Ongoing|
