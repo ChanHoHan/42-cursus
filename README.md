@@ -2,14 +2,14 @@
 
 My 42-cursus
 
-<br>
+<br/>
 # My Info 🙂
 
 ![ex_screenshot](./img/info_1.jpg)
 ![ex_screenshot](./img/info_2.jpg)
 
 last update : 23/1/21
-<br>
+<br/>
 # Project Lists
 
 |*Circle*|*Subject*|*Topics*|*Status*|
