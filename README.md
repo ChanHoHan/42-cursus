@@ -1,4 +1,4 @@
 # 42-cursus
 
 
-| Circle | Subject | Ongoing |
+| 항목 1 | 항목 2 | 항목 3 | 항목 4 |
