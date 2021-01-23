@@ -14,5 +14,5 @@ last update : 23/1/21
 
 |Circle|Subject|Topics|Status|
 |---|---|---|---|
-|0 Circle|libft|C Library|<font color= "green">PASS</font>|
-|1 Circle|netwat|network|<font color= "red">Ongoing</font>|
+|0 Circle|libft|C Library|PASS|
+|1 Circle|netwat|network|Ongoing|
