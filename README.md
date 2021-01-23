@@ -1,4 +1,4 @@
 # 42-cursus
 
-|:---|:---:|---:|
-| Circle | Subject | Ongoing
+
+| Circle | Subject | Ongoing |
