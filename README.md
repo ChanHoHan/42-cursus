@@ -1,6 +1,6 @@
 # 42-cursus
 
-My 42-cursus
+My 42-cursus  
 
 
 
@@ -9,7 +9,7 @@ My 42-cursus
 ![ex_screenshot](./img/info_1.jpg)
 ![ex_screenshot](./img/info_2.jpg)
 
-last update : 23/1/21
+last update : 23/1/21  
 
 
 
