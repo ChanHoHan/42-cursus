@@ -1,5 +1,8 @@
 # 42-cursus
 
+# My INFO
+
+
 
 |Circle|Subject|Topics|Ongoing|
 |---|---|---|---|
