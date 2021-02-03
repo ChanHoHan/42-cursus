@@ -18,6 +18,6 @@ last update : 23/1/21
 |*Circle*|*Subject*|*Topics*|*Status*|
 |---|---|---|---|
 |0 Circle|[libft](https://github.com/ChanHoHan/42-cursus/tree/master/00_Libft)|C Library|PASS|
-|1 Circle|[netwat]()|network|PASS|
+|1 Circle|[netwhat]()|network|PASS|
 |2 Circle|[gnl]()|C Programming|Ongoing|
 
