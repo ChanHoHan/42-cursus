@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 15:31:22 by chan              #+#    #+#             */
-/*   Updated: 2021/03/05 12:50:15 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/05 21:13:50 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,11 @@ int		exception_check(char **save, int num_line, char **line)
 	while ((*save)[i] && (*save)[i] != '\n')
 		i++;
 	if (!(*save)[i])
-	{
 		*line = ft_strdup(*save);
-		free(*save);
-		*save = NULL;
-		return (_EOF);
-	}
-	if (!nl_operation(&i, save, line))
+	else if (!nl_operation(&i, save, line))
 		return (LINE_R);
+	free(*save);
+	*save = NULL;
 	return (_EOF);
 }
 
