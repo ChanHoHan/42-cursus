@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 15:32:06 by chan              #+#    #+#             */
-/*   Updated: 2021/03/06 23:09:56 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/06 23:27:25 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 char	*ft_strdup(const char *s1);
 int		get_next_line(int fd, char **line);
-int	nl_split(int *ind, char **arr, char **line);
+int		nl_split(int *ind, char **arr, char **line);
 int		nl_operation(int *ind, char **arr, char **line);
-int	ft_gnljoin(char **save, char *buff);
-int	buff_operation(char **save, char *buff);
+int		ft_gnljoin(char **save, char *buff);
+int		buff_operation(char **save, char *buff);
 int		exception_check(char **save, int num_line, char **line, int *error);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);

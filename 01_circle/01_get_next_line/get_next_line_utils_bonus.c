@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 15:31:54 by chan              #+#    #+#             */
-/*   Updated: 2021/03/06 22:55:21 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/06 23:26:11 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t n)
 	return (d_len + s_len);
 }
 
-int	ft_gnljoin(char **save, char *buff)
+int		ft_gnljoin(char **save, char *buff)
 {
 	size_t	s1_l;
 	size_t	s2_l;
