@@ -19,5 +19,6 @@ last update : 23/1/21
 |---|---|---|---|
 |0 Circle|[libft](https://github.com/ChanHoHan/42-cursus/tree/master/00_Libft)|C Library|PASS|
 |1 Circle|[netwhat]()|network|PASS|
-|2 Circle|[gnl]()|C Programming|Ongoing|
+|1 Circle|[gnl]()|C Programming|PASS|
+|1 Circle|[ft_printf]()|C Programming|Ongoing|
 
