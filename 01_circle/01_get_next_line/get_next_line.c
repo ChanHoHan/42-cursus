@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 15:31:22 by chan              #+#    #+#             */
-/*   Updated: 2021/03/06 23:12:00 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/08 09:57:01 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	nl_operation(int *ind, char **save, char **line)
 	return (0);
 }
 
-int	exception_check(char **save, int num_line, char **line, int *error)
+int	exception_check(char **save, int num_line, char **line, int *check)
 {
 	int	i;
 
 	i = 0;
-	if (num_line == -1 || *error == -1)
+	if (num_line == -1 || *check == -1)
 		return (ERROR);
 	if (num_line > 0)
 		return (LINE_R);
@@ -59,15 +59,9 @@ int	exception_check(char **save, int num_line, char **line, int *error)
 			return (ERROR);
 		return (_EOF);
 	}
-	while ((*save)[i] && (*save)[i] != '\n')
-		i++;
-	if (!(*save)[i])
+	if (*check)
 		if (!(*line = ft_strdup(*save)))
 			return (ERROR);
-	if (!(i = nl_operation(&i, save, line)))
-		return (LINE_R);
-	else if (i == -1)
-		return (ERROR);
 	free(*save);
 	*save = NULL;
 	return (_EOF);
@@ -94,14 +88,14 @@ int	get_next_line(int fd, char **line)
 	char		*buff;
 	ssize_t		num_line;
 	int			i;
-	int			error;
+	int			check;
 
 	i = 0;
 	num_line = 1;
 	if (fd < 0 || fd >= OPEN_MAX || !line || BUFFER_SIZE <= 0 ||
 		!(buff = (char *)malloc(BUFFER_SIZE + 1)))
 		return (ERROR);
-	while ((error = nl_operation(&i, &save[fd], line)) == 1 &&
+	while ((check = nl_operation(&i, &save[fd], line)) == 1 &&
 			(num_line = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[num_line] = '\0';
@@ -110,5 +104,5 @@ int	get_next_line(int fd, char **line)
 	}
 	free(buff);
 	buff = NULL;
-	return (exception_check(&save[fd], num_line, line, &error));
+	return (exception_check(&save[fd], num_line, line, &check));
 }
