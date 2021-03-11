@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/03/10 09:03:46 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/11 13:43:36 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void		make_format(char type, t_point *pt, va_list ap)
 {
+
 	if (type == 'c')
 		c_printf(pt, va_arg(ap, int));
+	if (type == 's')
+		s_printf(pt, va_arg(ap, char *));
+
+
 	/*
 	else if (type == 'd')
 		d_printf(pt, ap);*/
@@ -31,27 +36,32 @@ static void		exception_check(const char *format, int *index)
 
 }*/
 
-void		format_check(const char *format, int i, t_point *pt, va_list ap)
+void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 {
 	int num;
 
-	if (format[i] == '-')
+	if (format[*i] == '-')
 		pt->minus = 1;
-	else if (format[i] == '.')
+	else if (format[*i] == '.')
 		pt->dot = 1;
-	else if (!(pt->dot) && format[i] == '*')
+	else if (!(pt->dot) && format[*i] == '*')
 		pt->width = va_arg(ap, int);
-	else if (pt->dot && format[i] == '*')
+	else if (pt->dot && format[*i] == '*')
 		pt->pre = va_arg(ap, int);
-	else if (format[i] == '0')
+	else if (format[*i] == '0')
+	{
+		printf("%d", format[*i]);
 		pt->zero = 1;
-	else if ((num = width_atoi(format, &i)))// 수정
+	}
+	else if ((num = width_atoi(format, i)))// 수정
 	{
 		if (pt->dot)
 			pt->pre = num;
 		else
 			pt->width = num;
+		(*i)--;
 	}
+	(*i)++;
 }
 
 int		ft_printf_core(const char *format, va_list ap)
@@ -68,17 +78,15 @@ int		ft_printf_core(const char *format, va_list ap)
 		{
 			i++;
 			t_point_init(&pt);
-			while (format[i] && !is_type(format[i]))
-			{// 널 일때만 i--
-				format_check(format, i, &pt, ap);
-				i++;
-			}
+			while (format[i] && !is_type(format[i]))// 널 일때만 i--
+				format_check(format, &i, &pt, ap);
+			if (format[i] == '\0')
+				i--;
+			else
+				make_format(format[i], &pt, ap);
 		}
-		// 수
-		if (format[i] == '\0')
-			i--;
 		else
-			make_format(format[i], &pt, ap);
+			write(1, &format[i], 1);
 		//exception_check()
 		i++;
 	}
