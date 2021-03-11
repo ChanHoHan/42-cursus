@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_printf.c                                      :+:      :+:    :+:   */
+/*   ft_p_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:43:48 by chan              #+#    #+#             */
-/*   Updated: 2021/03/11 17:45:24 by chan             ###   ########.fr       */
+/*   Created: 2021/03/11 17:30:24 by chan              #+#    #+#             */
+/*   Updated: 2021/03/11 17:53:42 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-void		s_printf_parsing(int width)
+
+intq	atoi_base()
 {
 
 }
-*/
-int		s_printf(t_point *pt, char *s)
+
+int		p_printf(t_point *pt, unsigned long long p)//구조체 받을 필요있는지 생각해보기
 {
-	//if (!s)
-	return(1);
-		
+	atoi_base(p);
+	return (1);
 }

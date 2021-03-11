@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/03/11 13:43:36 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/11 17:44:46 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void		make_format(char type, t_point *pt, va_list ap)
 
 	if (type == 'c')
 		c_printf(pt, va_arg(ap, int));
-	if (type == 's')
+	else if (type == 's')
 		s_printf(pt, va_arg(ap, char *));
+	else if (type == 'p')
+		p_printf(pt, va_arg(ap, unsigned long long));
 
 
 	/*

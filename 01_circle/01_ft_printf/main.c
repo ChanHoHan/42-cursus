@@ -2,7 +2,9 @@
 
 int main()
 {
-	ft_printf("ab %-04c %c",'a', 'b');
+	int a = 10;
+
+	ft_printf("%p", &a);
 	//printf("%c", 'a');
 	return (0);
 }
