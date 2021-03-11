@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/03/04 18:37:35 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/09 20:14:34 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,26 @@ int		is_type(char ch)
 {
 	return (ch == 'c' || ch == 's' || ch == 'p' || ch == 'd' ||
 			ch == 'i' || ch == 'u' || ch == 'x' || ch == 'X' ||
-			ch == '%')
+			ch == '%');
 }
 
-int		width_atoi(const char *s)
+void		t_point_init(t_point* pt)
+{
+	pt->minus = 0;
+	pt->zero = 0;
+	pt->width = 0;
+	pt->dot = 0;
+	pt->pre = 0;
+}
+
+int	ft_isdigit(int c)
+{
+	if (48 <= c && c <= 57)
+		return (1);
+	return (0);
+}
+
+int		width_atoi(const char *s, int *i)
 {
 	long long	ret;
 	long long	tmp;
@@ -27,12 +43,13 @@ int		width_atoi(const char *s)
 
 	ret = 0;
 	of_cnt = 0;
-	while (ft_isdigit(*s))
+	while (ft_isdigit(s[*i]))
 	{
-		tmp = ret * 10 + (*s++ - '0');
+		tmp = ret * 10 + (s[*i] - '0');
 		if ((((1 << 31) & tmp) ^ ((1 << 31) & ret)) == 0)
 			of_cnt = 1;
 		ret = tmp;
+		(*i)++;
 	}
 	if (of_cnt && ret >= 2147483647)
 		return (-1);
@@ -40,5 +57,3 @@ int		width_atoi(const char *s)
 		return (0);
 	return ((int)ret);
 }
-
-void		
