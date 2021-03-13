@@ -4,7 +4,7 @@ int main()
 {
 	int a = 10;
 
-	ft_printf("%p", &a);
-	//printf("%c", 'a');
+	ft_printf("%p\n", &a);
+	printf("%p", &a);
 	return (0);
 }
