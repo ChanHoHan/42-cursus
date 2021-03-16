@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 20:00:54 by chan              #+#    #+#             */
-/*   Updated: 2021/03/11 20:11:51 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/16 17:31:16 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ static void	print_val(int quo, int rem, int *len)
 	}
 	ft_putchar_fd(rem + '0', 1);
 	(*len)++;
+}
+
+int		ft_isdigit(int c)
+{
+	if (48 <= c && c <= 57)
+		return (1);
+	return (0);
+}
+
+size_t		ft_strlen(const char *s)
+{
+	size_t		i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 int		ft_putnbr_fd(unsigned long long n)

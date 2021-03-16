@@ -6,26 +6,24 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/03/11 17:44:46 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/16 21:21:06 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		make_format(char type, t_point *pt, va_list ap)
+int		make_format(char type, t_point *pt, va_list ap)
 {
 
 	if (type == 'c')
-		c_printf(pt, va_arg(ap, int));
+		return(c_printf(pt, va_arg(ap, int)));
 	else if (type == 's')
-		s_printf(pt, va_arg(ap, char *));
+		return(s_printf(pt, va_arg(ap, char *)));
 	else if (type == 'p')
-		p_printf(pt, va_arg(ap, unsigned long long));
-
-
-	/*
+		return(p_printf(pt, va_arg(ap, unsigned long long)));
 	else if (type == 'd')
-		d_printf(pt, ap);*/
+		return(d_printf(pt, va_arg(ap, unsigned int)));
+	return (1);
 }
 /*
 static void		exception_check(const char *format, int *index)
@@ -66,6 +64,12 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 	(*i)++;
 }
 
+void		print_format(int *rd_size, char ch)
+{
+	write(1, &ch, 1);
+	++(*rd_size);
+}
+
 int		ft_printf_core(const char *format, va_list ap)
 {
 	int	i;
@@ -74,6 +78,7 @@ int		ft_printf_core(const char *format, va_list ap)
 	t_point	pt;
 
 	i = 0;
+	rd_size = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -85,14 +90,13 @@ int		ft_printf_core(const char *format, va_list ap)
 			if (format[i] == '\0')
 				i--;
 			else
-				make_format(format[i], &pt, ap);
+				rd_size = make_format(format[i], &pt, ap);
 		}
 		else
-			write(1, &format[i], 1);
-		//exception_check()
+			print_format(&rd_size, format[i]);
 		i++;
 	}
-	return (i);
+	return (rd_size);
 }
 
 int		ft_printf(const char *format, ...)

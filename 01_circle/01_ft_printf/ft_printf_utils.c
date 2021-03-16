@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/03/09 20:14:34 by chan             ###   ########.fr       */
+/*   Updated: 2021/03/16 18:37:39 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,26 @@ void		t_point_init(t_point* pt)
 	pt->pre = 0;
 }
 
-int	ft_isdigit(int c)
+void		printf_zs(char val, int width)
 {
-	if (48 <= c && c <= 57)
-		return (1);
-	return (0);
+	int	i;
+
+	i = -1;
+	while (++i < width)
+		write(1, &val, 1);
+}
+
+int		compare_val(int a, int b, int fl)
+{
+	if (fl)
+	{
+		if (a > b)
+			return (a);
+		return (b);
+	}
+	if (a > b)
+		return (b);
+	return (a);
 }
 
 int		width_atoi(const char *s, int *i)
