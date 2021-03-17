@@ -6,10 +6,9 @@ My 42-cursus
 
 # My Info 🙂
 
-![ex_screenshot](./img/info_1.jpg)
-![ex_screenshot](./img/info_2.jpg)
+[![chan's 42 stats](https://badge42.herokuapp.com/api/stats/chan)](https://github.com/JaeSeoKim/badge42)
 
-last update : 23/1/21  
+last update : 17/3/21  
 
 
 
