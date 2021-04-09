@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/03/16 21:21:06 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/09 15:30:12 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		make_format(char type, t_point *pt, va_list ap)
 		return(s_printf(pt, va_arg(ap, char *)));
 	else if (type == 'p')
 		return(p_printf(pt, va_arg(ap, unsigned long long)));
-	else if (type == 'd')
+	else if (type == 'd' || type == 'i')
 		return(d_printf(pt, va_arg(ap, unsigned int)));
 	return (1);
 }
@@ -43,16 +43,16 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 	if (format[*i] == '-')
 		pt->minus = 1;
 	else if (format[*i] == '.')
+	{
+		pt->zero = 0;
 		pt->dot = 1;
+	}
 	else if (!(pt->dot) && format[*i] == '*')
 		pt->width = va_arg(ap, int);
 	else if (pt->dot && format[*i] == '*')
 		pt->pre = va_arg(ap, int);
 	else if (format[*i] == '0')
-	{
-		printf("%d", format[*i]);
 		pt->zero = 1;
-	}
 	else if ((num = width_atoi(format, i)))// 수정
 	{
 		if (pt->dot)

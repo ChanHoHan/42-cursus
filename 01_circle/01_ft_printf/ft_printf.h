@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:25 by chan              #+#    #+#             */
-/*   Updated: 2021/03/16 18:36:10 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/09 16:42:25 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_point
 	int	width;
 	int	dot;
 	int	pre;
+	int	padding;
+	int	sign;
 }		t_point;
 int		width_atoi(const char *s, int *i);
 void		t_point_init(t_point* pt);
@@ -34,6 +36,7 @@ int		ft_printf(const char *format, ...);
 int		c_printf(t_point *pt, int ch);
 int			p_printf(t_point *pt, unsigned long long p);
 int			s_printf(t_point *pt, char *s);
+int			d_printf(t_point *pt, long long ch);
 int		make_format(char type, t_point *pt, va_list ap);
 int		ft_putnbr_fd(unsigned long long n);
 int		compare_val(int a, int b, int fl);

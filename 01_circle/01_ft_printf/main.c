@@ -8,6 +8,7 @@ int main()
 
 
 	// printf s
+	/*
 	x = ft_printf("%5.3s\n", a);
 	printf("%d\n", x);
 	y = printf("%5.3s\n", a);
@@ -15,14 +16,13 @@ int main()
 	x = ft_printf("%.3s\n", "hi my name");
 	printf("%d\n", x);
 	y = printf("%.3s\n", "hi my name");
-	printf("%d\n", y);
-
-/*
-	x = ft_printf("123\n");
-	printf("%d\n", x);
-	y = printf("123\n");
 	printf("%d\n", y);*/
-/*
+
+	x = ft_printf("%d\n", 12);
+	//printf("%d\n", x);
+	//y = printf("%d\n", 12);
+	//printf("%d\n", y);
+	/*
 	printf("=c------=\n");
 	x = ft_printf("%123c\n", b);
 	printf("%d\n", x);
