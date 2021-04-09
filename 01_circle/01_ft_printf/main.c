@@ -18,10 +18,10 @@ int main()
 	y = printf("%.3s\n", "hi my name");
 	printf("%d\n", y);*/
 
-	x = ft_printf("%d\n", 12);
-	//printf("%d\n", x);
-	//y = printf("%d\n", 12);
-	//printf("%d\n", y);
+	x = ft_printf("%-4.3d\n", -30);
+	printf("%d\n", x);
+	y = printf("%-4.3d\n", -30);
+	printf("%d\n", y);
 	/*
 	printf("=c------=\n");
 	x = ft_printf("%123c\n", b);
@@ -46,6 +46,5 @@ int main()
 	printf("%5.s\n", "hi my name is");
 	printf("%3.5s\n", "hi my name is");
 */
-	printf("\n\n");
 	return (0);
 }

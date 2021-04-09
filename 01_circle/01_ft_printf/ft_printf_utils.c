@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/04/09 15:26:31 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/09 17:58:54 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		t_point_init(t_point* pt)
 	pt->width = 0;
 	pt->dot = 0;
 	pt->pre = 0;
+	pt->sign = 0;
 	pt->padding = 0;
 }
 
@@ -34,7 +35,8 @@ void		printf_zs(char val, int width)
 	int	i;
 
 	i = -1;
-	write(1, &val, width);
+	while (++i < width)
+		write(1, &val, 1);
 }
 
 int		compare_val(int a, int b, int fl)
