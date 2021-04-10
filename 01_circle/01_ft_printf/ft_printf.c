@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/09 18:58:11 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/10 14:21:45 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int		make_format(char type, t_point *pt, va_list ap)
 	else if (type == 'p')
 		return(p_printf(pt, va_arg(ap, unsigned long long)));
 	else if (type == 'd' || type == 'i')
-		return(d_printf(pt, va_arg(ap, unsigned int)));
-	else if (type == 'u') // 여기부터 하기
+		return(d_printf(pt, va_arg(ap, int)));
+	else if (type == 'u')
 		return(u_printf(pt, va_arg(ap, unsigned int)));
+	else if (type == 'X')
+		return(X_printf(pt, va_arg(ap, int)));
+	else if (type == 'x')
+		return(x_printf(pt, va_arg(ap, int)));
 	return (1);
 }
 /*

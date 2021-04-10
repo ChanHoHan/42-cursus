@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_printf.c                                      :+:      :+:    :+:   */
+/*   ft_sx_printf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/10 14:16:53 by chan             ###   ########.fr       */
+/*   Created: 2021/04/10 14:22:34 by chan              #+#    #+#             */
+/*   Updated: 2021/04/10 14:32:34 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	num_len(int *num, t_point *pt)
+int	x_num_len(unsigned int *num, t_point *pt)
 {
 	int		len;
 	int		_num;
@@ -32,21 +32,25 @@ int	num_len(int *num, t_point *pt)
 	return (len);
 }
 
-void	putnbr_printf(long long num)
+void	x_putnbr_printf(long long num)
 {
 	long long	quo;
 	long long	rem;
 	char		ch;
 
-	quo = num / 10;
-	rem = num % 10;
-	if (num > 10)
-		putnbr_printf(quo);
-	ch = '0' + rem;
-	write(1, &ch, 1);
+	quo = num / 16;
+	rem = num % 16;
+	if (quo > 16)
+		x_putnbr_printf(quo);
+	else
+	{
+		ch = '0' + quo;
+		write(1, &ch, 1);
+	}
+	write(1, &SMALL[rem], 1);
 }
 
-void	padding_operation(t_point *pt)
+void	x_padding_operation(t_point *pt)
 {
 	if (pt->sign)
 		write (1, "-", 1);
@@ -54,7 +58,7 @@ void	padding_operation(t_point *pt)
 		printf_zs('0', pt->padding);
 }
 
-void	width_operation(t_point *pt, int *len)
+void	x_width_operation(t_point *pt, int *len)
 {
 	if (pt->width - *len <= 0)
 		return ;
@@ -62,31 +66,27 @@ void	width_operation(t_point *pt, int *len)
 	*len = pt->width;
 }
 
-int	d_printf(t_point *pt, int num)
+int	x_printf(t_point *pt, unsigned int num)
 {
 	int	len;
-// 출력할 자릿수, 띄어쓰기 또는 제로 padding, minus flag 체크
-	len = num_len(&num, pt);
+
+	len = x_num_len(&num, pt);
 	if (pt->pre > len)
 		pt->padding = pt->pre - len;//숫자 앞에 zero padding
-	if (pt->sign == 1)
-		len++;
 	if (pt->zero && pt->width - len > pt->padding)
 		pt->padding = pt->width - len;
-	if (len + pt->padding >= pt->width)
-		pt->width = 0;
 	len += pt->padding;
 	if (pt->minus)
 	{
-		padding_operation(pt);
-		putnbr_printf(num);
-		width_operation(pt, &len);
+		x_padding_operation(pt);
+		x_putnbr_printf(num);
+		x_width_operation(pt, &len);
 	}
 	else
 	{
-		width_operation(pt, &len);
-		padding_operation(pt);
-		putnbr_printf(num);
+		x_width_operation(pt, &len);
+		x_padding_operation(pt);
+		x_putnbr_printf(num);
 	}
 	return (len + pt->padding);//수정
 }
