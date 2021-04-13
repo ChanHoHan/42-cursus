@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/10 14:21:45 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/13 20:04:34 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int		make_format(char type, t_point *pt, va_list ap)
 {
-
+	if (pt->width < 0)
+	{
+		pt->minus = 1;
+		pt->width = -(pt->width);
+	}
 	if (type == 'c')
 		return(c_printf(pt, va_arg(ap, int)));
 	else if (type == 's')
@@ -45,7 +49,7 @@ static void		exception_check(const char *format, int *index)
 void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 {
 	int num;
-
+	
 	if (format[*i] == '-')
 		pt->minus = 1;
 	else if (format[*i] == '.')
@@ -57,9 +61,9 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 		pt->width = va_arg(ap, int);
 	else if (pt->dot && format[*i] == '*')
 		pt->pre = va_arg(ap, int);
-	else if (format[*i] == '0')
+	else if (format[*i - 1] == '%' && format[*i] == '0')
 		pt->zero = 1;
-	else if ((num = width_atoi(format, i)))// 수정
+	else if ((num = width_atoi(format, i)) >= 0)// 수정
 	{
 		if (pt->dot)
 			pt->pre = num;
@@ -80,7 +84,6 @@ int		ft_printf_core(const char *format, va_list ap)
 {
 	int	i;
 	int	rd_size;
-	char	type;
 	t_point	pt;
 
 	i = 0;

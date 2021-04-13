@@ -6,13 +6,13 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/10 14:16:53 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/13 19:38:46 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	num_len(int *num, t_point *pt)
+int	num_len(long long *num, t_point *pt)
 {
 	int		len;
 	int		_num;
@@ -24,6 +24,12 @@ int	num_len(int *num, t_point *pt)
 		pt->sign = 1;
 		*num = -(*num);
 	}
+	if (pt->zero && *num == 0)
+		return (1);
+	if (pt->dot && *num == 0)
+		return (0);
+	if (*num == 0)
+		return (1);
 	while (_num)
 	{
 		_num = _num / 10;
@@ -46,12 +52,17 @@ void	putnbr_printf(long long num)
 	write(1, &ch, 1);
 }
 
-void	padding_operation(t_point *pt)
+void	num_padding_operation(t_point *pt, long long num)
 {
 	if (pt->sign)
 		write (1, "-", 1);
 	if (pt->padding > 0)
 		printf_zs('0', pt->padding);
+	if (!num && pt->dot && !pt->pre)
+		return ;
+	if (num == 0 && pt->dot) // 주의
+		return;
+	putnbr_printf(num);
 }
 
 void	width_operation(t_point *pt, int *len)
@@ -62,7 +73,7 @@ void	width_operation(t_point *pt, int *len)
 	*len = pt->width;
 }
 
-int	d_printf(t_point *pt, int num)
+int	d_printf(t_point *pt, long long num)
 {
 	int	len;
 // 출력할 자릿수, 띄어쓰기 또는 제로 padding, minus flag 체크
@@ -75,18 +86,18 @@ int	d_printf(t_point *pt, int num)
 		pt->padding = pt->width - len;
 	if (len + pt->padding >= pt->width)
 		pt->width = 0;
+	if (pt->pre < 0)
+		pt->width = -pt->pre;
 	len += pt->padding;
 	if (pt->minus)
 	{
-		padding_operation(pt);
-		putnbr_printf(num);
+		num_padding_operation(pt, num);
 		width_operation(pt, &len);
 	}
 	else
 	{
 		width_operation(pt, &len);
-		padding_operation(pt);
-		putnbr_printf(num);
+		num_padding_operation(pt, num);
 	}
-	return (len + pt->padding);//수정
+	return (len);//수정
 }

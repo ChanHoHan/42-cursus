@@ -8,8 +8,63 @@ int main()
 	int x,y ;
 */
 
+	int a, b;
+
+	a = printf("%.0i", 8);
+	printf(" %d\n", a);
+	a = ft_printf("%.0i", 8);
+	printf(" %d\n", a);
+
+	printf("\n");
+	a = printf("%.0d", -12);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", -12);
+	printf(" %d\n", a);
+
+	printf("\n");
+	a = printf("%.0d", 123456789);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", 123456789);
+	printf(" %d\n", a);
+
+	printf("\n");
+	a = printf("%.0d", 0);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", 0);
+	printf(" %d\n", a);
+
+
+	printf("\n");
+	a = printf("%.0d", -12345678);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", -12345678);
+	printf(" %d\n", a);
+
+	printf("\n");
+
+	a = printf("%.0d", 97);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", 97);
+	printf(" %d\n", a);
+
+	printf("\n");
+
+	a = printf("%.0d", -2147483648);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", -2147483648);
+	printf(" %d\n", a);
+
+	printf("\n");
+
+	a = printf("%.0d", 2147483647);
+	printf(" %d\n", a);
+	a = ft_printf("%.0d", 2147483647);
+	printf(" %d\n", a);
+
+	printf("\n");
+
 	//printf x
-	unsigned int a = 30;
+	//unsigned int a = 30;
 	/*
 	printf("1 :%4x\n", a);
 	ft_printf("1 :%4x\n", a);
@@ -44,6 +99,7 @@ int main()
 */
 
 	//printf X
+/*
 	printf("1 :%4X\n", a);
 	ft_printf("1 :%4X\n", a);
 	printf("1 :%3.4X\n", a);
@@ -74,7 +130,7 @@ int main()
 	ft_printf("13 :%4.3X\n", a);
 	printf("14 :%-4.3X\n", a);
 	ft_printf("14 :%-4.3X\n", a);
-
+*/
 	//printf u
 /*
 	unsigned int a = 30;
@@ -109,10 +165,11 @@ int main()
 	ft_printf("13 :%4.3u\n", a);
 	printf("14 :%-4.3u\n", a);
 	ft_printf("14 :%-4.3u\n", a);
-*/
+	printf("15 : %u %u %u\n", 0, 2147483647, 42);
+	ft_printf("15 : %u %u %u\n", 0, 2147483647, 42);*/
 	// printf d
 /*
-	int a = 30;
+	int a = 0;
 	printf("1 :%4d\n", a);
 	ft_printf("1 :%4d\n", a);
 	printf("1 :%3.4d\n", a);
@@ -143,8 +200,8 @@ int main()
 	ft_printf("13 :%4.3d\n", a);
 	printf("14 :%-4.3d\n", a);
 	ft_printf("14 :%-4.3d\n", a);
-	printf("15 : %d %d %d\n", 0, 2147483647, 42);
-	ft_printf("15 : %d %d %d\n", 0, 2147483647, 42);
+	printf("15 : %ld %d %d %d\n", -2147483648, 0, 2147483647, 42);
+	ft_printf("15 : %d %d %d %d\n", -2147483648, 0, 2147483647, 42);
 */
 	// printf s
 	/*
