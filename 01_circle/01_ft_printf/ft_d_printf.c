@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 19:38:46 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/13 20:53:35 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,18 @@ void	putnbr_printf(long long num)
 	write(1, &ch, 1);
 }
 
-void	num_padding_operation(t_point *pt, long long num)
+void	num_padding_operation(t_point *pt, long long num, int *len)
 {
 	if (pt->sign)
 		write (1, "-", 1);
 	if (pt->padding > 0)
 		printf_zs('0', pt->padding);
+	if (pt->pre_ast && pt->pre < 0 && !num)
+	{
+		write(1, "0", 1);
+		(*len)++;
+		return ;
+	}
 	if (!num && pt->dot && !pt->pre)
 		return ;
 	if (num == 0 && pt->dot) // 주의
@@ -86,18 +92,18 @@ int	d_printf(t_point *pt, long long num)
 		pt->padding = pt->width - len;
 	if (len + pt->padding >= pt->width)
 		pt->width = 0;
-	if (pt->pre < 0)
+	if (pt->pre < 0 && !pt->pre_ast)
 		pt->width = -pt->pre;
 	len += pt->padding;
 	if (pt->minus)
 	{
-		num_padding_operation(pt, num);
+		num_padding_operation(pt, num, &len);
 		width_operation(pt, &len);
 	}
 	else
 	{
 		width_operation(pt, &len);
-		num_padding_operation(pt, num);
+		num_padding_operation(pt, num, &len);
 	}
 	return (len);//수정
 }

@@ -10,9 +10,9 @@ int main()
 
 	int a, b;
 
-	a = printf("%.0i", 8);
+	a = printf("%0*i", -4, 8);
 	printf(" %d\n", a);
-	a = ft_printf("%.0i", 8);
+	a = ft_printf("%0*i", -4, 8);
 	printf(" %d\n", a);
 
 	printf("\n");

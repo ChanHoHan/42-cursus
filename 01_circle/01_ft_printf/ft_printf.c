@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 20:04:34 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/13 20:57:28 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		make_format(char type, t_point *pt, va_list ap)
 	if (pt->width < 0)
 	{
 		pt->minus = 1;
+		pt->zero = 0;
 		pt->width = -(pt->width);
 	}
 	if (type == 'c')
@@ -48,8 +49,6 @@ static void		exception_check(const char *format, int *index)
 
 void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 {
-	int num;
-	
 	if (format[*i] == '-')
 		pt->minus = 1;
 	else if (format[*i] == '.')
@@ -60,15 +59,18 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 	else if (!(pt->dot) && format[*i] == '*')
 		pt->width = va_arg(ap, int);
 	else if (pt->dot && format[*i] == '*')
+	{
 		pt->pre = va_arg(ap, int);
+		pt->pre_ast = 1;
+	}
 	else if (format[*i - 1] == '%' && format[*i] == '0')
 		pt->zero = 1;
-	else if ((num = width_atoi(format, i)) >= 0)// 수정
+	else if ((pt->tmp = width_atoi(format, i)) >= 0)
 	{
 		if (pt->dot)
-			pt->pre = num;
+			pt->pre = pt->tmp;
 		else
-			pt->width = num;
+			pt->width = pt->tmp;
 		(*i)--;
 	}
 	(*i)++;
