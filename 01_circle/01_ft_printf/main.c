@@ -25,11 +25,14 @@ int main()
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
+	
+	printf(" --- Return : %d\n", printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0
 
+	printf(" --- Return : %d\n", ft_printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0
 	//PRINT(" --- Return : %d\n", PRINT("Simple input test"));
 	//PRINT(" --- Return : %d\n", PRINT("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", i, j, k, l, m, n, c, c, j, j, j)); //T2
-	printf(" --- Return : %d\n", printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c, e, d)); //T3
-	printf(" --- Return : %d\n", ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c, e, d)); //T3
+	//printf(" --- Return : %d\n", printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c, e, d)); //T3
+	//printf(" --- Return : %d\n", ft_printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c, e, d)); //T3
 	//printf(" --- Return : %d\n", printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d)); //T4  
 	//printf(" --- Return : %d\n", ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d)); 
 	//printf(" --- Return : %d\n", printf("%1.i, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d, %1.d", i, j, k, l, m, c, e, d)); //T23

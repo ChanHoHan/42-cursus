@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 23:11:59 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/14 21:03:32 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		make_format(char type, t_point *pt, va_list ap)
 		pt->zero = 0;
 		pt->width = -(pt->width);
 	}
+	if (pt->pre_ast && (pt->pre == 1 || !pt->pre))
+		pt->zero = 0;
 	if (type == 'c')
 		return(c_printf(pt, va_arg(ap, int)));
 	else if (type == 's')

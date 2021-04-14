@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/14 20:38:49 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/14 21:03:36 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,11 @@ void	width_operation(t_point *pt, int *len, long long num)//
 			*len += pt->width - *len;
 		return;
 	}
+	if (!pt->minus && !num && !pt->pre && pt->pre_ast)
+		pt->width++;
+	//printf("%d %d", pt->width, *len);
 	if (pt->width - *len <= 0)
 		return ;
-	//printf("\n%d %d %d\n", pt->width, *len, num);
 	printf_zs(' ', pt->width - *len);
 	*len += pt->width - *len;
 }
@@ -110,7 +112,5 @@ int	d_printf(t_point *pt, long long num)
 		width_operation(pt, &len, num);//
 		num_padding_operation(pt, num, &len);
 	}
-	//if (!num && pt->dot && pt->pre <= 0)
-	//	len--;
 	return (len);//수정
 }
