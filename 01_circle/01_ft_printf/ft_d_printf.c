@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 20:53:35 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/14 20:38:49 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int	num_len(long long *num, t_point *pt)
 		pt->sign = 1;
 		*num = -(*num);
 	}
-	if (pt->zero && *num == 0)
-		return (1);
-	if (pt->dot && *num == 0)
-		return (0);
 	if (*num == 0)
 		return (1);
+	if (!pt->pre_ast && pt->pre > 0)
+		pt->zero = 0;
 	while (_num)
 	{
 		_num = _num / 10;
@@ -58,31 +56,42 @@ void	num_padding_operation(t_point *pt, long long num, int *len)
 		write (1, "-", 1);
 	if (pt->padding > 0)
 		printf_zs('0', pt->padding);
-	if (pt->pre_ast && pt->pre < 0 && !num)
+	if (!num && !pt->pre_ast && pt->dot && pt->pre <= 0)
 	{
-		write(1, "0", 1);
-		(*len)++;
+		if (!pt->width)
+			(*len)--;
 		return ;
 	}
-	if (!num && pt->dot && !pt->pre)
+	if (pt->pre_ast && !pt->pre && !num)
+	{
+		(*len)--;
 		return ;
-	if (num == 0 && pt->dot) // 주의
-		return;
+	}
 	putnbr_printf(num);
 }
 
-void	width_operation(t_point *pt, int *len)
+void	width_operation(t_point *pt, int *len, long long num)//
 {
+	if (!num && !pt->pre_ast && pt->dot && pt->pre <= 0)
+	{
+		printf_zs(' ', pt->width);
+		if (pt->width > 0)
+			*len += pt->width - *len;
+		return;
+	}
 	if (pt->width - *len <= 0)
 		return ;
+	//printf("\n%d %d %d\n", pt->width, *len, num);
 	printf_zs(' ', pt->width - *len);
-	*len = pt->width;
+	*len += pt->width - *len;
 }
 
 int	d_printf(t_point *pt, long long num)
 {
 	int	len;
 // 출력할 자릿수, 띄어쓰기 또는 제로 padding, minus flag 체크
+	if (pt->pre < 0 && !pt->pre_ast)
+		pt->width = -pt->pre;
 	len = num_len(&num, pt);
 	if (pt->pre > len)
 		pt->padding = pt->pre - len;//숫자 앞에 zero padding
@@ -90,20 +99,18 @@ int	d_printf(t_point *pt, long long num)
 		len++;
 	if (pt->zero && pt->width - len > pt->padding)
 		pt->padding = pt->width - len;
-	if (len + pt->padding >= pt->width)
-		pt->width = 0;
-	if (pt->pre < 0 && !pt->pre_ast)
-		pt->width = -pt->pre;
-	len += pt->padding;
+	len += pt->padding;	
 	if (pt->minus)
 	{
 		num_padding_operation(pt, num, &len);
-		width_operation(pt, &len);
+		width_operation(pt, &len, num);//
 	}
 	else
 	{
-		width_operation(pt, &len);
+		width_operation(pt, &len, num);//
 		num_padding_operation(pt, num, &len);
 	}
+	//if (!num && pt->dot && pt->pre <= 0)
+	//	len--;
 	return (len);//수정
 }

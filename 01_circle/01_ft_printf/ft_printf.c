@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 20:57:28 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/13 23:11:59 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 		pt->minus = 1;
 	else if (format[*i] == '.')
 	{
-		pt->zero = 0;
+		//pt->zero = 0;
 		pt->dot = 1;
 	}
 	else if (!(pt->dot) && format[*i] == '*')
