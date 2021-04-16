@@ -3,8 +3,7 @@
 
 int main()
 {
-
-	int		a = -4;
+	//int		a = -4;
 	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
@@ -25,10 +24,18 @@ int main()
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
-	
-	printf(" --- Return : %d\n", printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0
+/*	
+	printf(" ---- Return : %d\n", printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p, -4, q, -4, r, -4, s, -4, t, -4, u)); // 1st '*' = -4, 2nd '*' = 14
 
-	printf(" --- Return : %d\n", ft_printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0
+	printf(" ---- Return : %d\n", ft_printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p,-4, q,-4, r,-4, s,-4, t,-4, u)); // 1st '*' = -4, 2nd '*' = 14
+
+printf(" ---- Return : %d\n", printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p, -4, q, -4, r, -4, s, -4, t, -4, u)); // 1st '*' = -4, 2nd '*' = 14
+
+	printf(" ---- Return : %d\n", ft_printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p,-4, q,-4, r,-4, s,-4, t,-4, u)); // 1st '*' = -4, 2nd '*' = 14*/
+
+	/*printf(" --- Return : %d\n", printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0
+
+	printf(" --- Return : %d\n", ft_printf("%*.*ik\n", 1, 0, 0));  // 1st '*' = 1, 2nd '*' = 0*/
 	//PRINT(" --- Return : %d\n", PRINT("Simple input test"));
 	//PRINT(" --- Return : %d\n", PRINT("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", i, j, k, l, m, n, c, c, j, j, j)); //T2
 	//printf(" --- Return : %d\n", printf("%0i, %0d, %0d, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c, e, d)); //T3
@@ -99,10 +106,10 @@ int main()
 	printf("\n");
 */
 	//printf x
-	//unsigned int a = 30;
+	unsigned int a = 123123;
+	printf("--retrn : %d \n",printf("1 :%6x ", a));
+	printf("--retrn : %d \n",ft_printf("1 :%6x ", a));
 	/*
-	printf("1 :%4x\n", a);
-	ft_printf("1 :%4x\n", a);
 	printf("1 :%3.4x\n", a);
 	ft_printf("1 :%3.4x\n", a);
 	printf("2 :%5.x\n", a);
@@ -130,11 +137,10 @@ int main()
 	printf("13 :%4.3x\n", a);
 	ft_printf("13 :%4.3x\n", a);
 	printf("14 :%-4.3x\n", a);
-	ft_printf("14 :%-4.3x\n", a);
-*/
+	ft_printf("14 :%-4.3x\n\n", a);
 
 	//printf X
-/*
+	
 	printf("1 :%4X\n", a);
 	ft_printf("1 :%4X\n", a);
 	printf("1 :%3.4X\n", a);
@@ -239,7 +245,7 @@ int main()
 	ft_printf("15 : %d %d %d %d\n", -2147483648, 0, 2147483647, 42);
 */
 	// printf s
-	/*
+/*	
 	x = ft_printf("%5.3s\n", a);
 	printf("%d\n", x);
 	y = printf("%5.3s\n", a);

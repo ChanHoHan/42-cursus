@@ -6,7 +6,7 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:43:48 by chan              #+#    #+#             */
-/*   Updated: 2021/03/16 18:50:19 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/15 21:49:33 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		s_printf_parsing(t_point *pt, char *s)
 	
 	i = 0;
 	len = ft_strlen(s);
-	if (pt->dot)
-		len = compare_val(ft_strlen(s), pt->pre, 0);
+	if (pt->dot && pt->pre >= 0)
+		len = compare_val(len, pt->pre, 0);
 	if (pt->width > len)
 	{
 		if (pt->minus)
@@ -44,5 +44,7 @@ int		s_printf(t_point *pt, char *s)
 {
 	if (!s)
 		s = "(null)";
+	if (pt->width < 0)
+		pt->width = -pt->width;
 	return (s_printf_parsing(pt, s));
 }
