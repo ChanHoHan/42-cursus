@@ -6,21 +6,21 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/15 23:34:47 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/16 20:01:09 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	x_num_len(unsigned int *num, t_point *pt)
+int	x_num_len(long long *num, t_point *pt)
 {
 	int		len;
-	int		_num;
+	long long	_num;
 
 	len = 0;
+	if (*num < 0)
+		*num = -(*num);
 	_num = *num;
-	if (pt->dot)
-		pt->zero = 0;
 	if (*num < 0)
 	{
 		pt->sign = 1;
@@ -88,7 +88,7 @@ void	x_width_operation(t_point *pt, int *len, long long num)//
 	*len += pt->width - *len;
 }
 
-int	x_printf(t_point *pt, unsigned int num)
+int	x_printf(t_point *pt, long long num)
 {
 	int	len;
 // 출력할 자릿수, 띄어쓰기 또는 제로 padding, minus flag 체크

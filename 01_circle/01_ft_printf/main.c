@@ -3,7 +3,7 @@
 
 int main()
 {
-	//int		a = -4;
+	int		a = -4;
 	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
@@ -24,7 +24,24 @@ int main()
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
-/*	
+
+
+	//printf(" --- Return : %d\n", printf("%-*p", 8, (void *)1));
+	//printf(" --- Return : %d\n", ft_printf("%-*p", 8, (void *)1));
+
+	printf(" --- Return : %d\n", printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960));
+
+	printf(" --- Return : %d\n", ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960));
+				/*
+	printf(" --- Return : %d\n", printf("%0*.*u", 3, -1, i));
+	printf(" --- Return : %d\n", ft_printf("%0*.*u",3, -1, i));
+*/	/*
+	printf(" --- Return : %d\n", printf("%x", j));
+	printf(" --- Return : %d\n", ft_printf("%x", j));
+	printf(" --- Return : %d\n", printf("%X", j));
+	printf(" --- Return : %d\n", ft_printf("%X", j));
+*/
+	/*	
 	printf(" ---- Return : %d\n", printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p, -4, q, -4, r, -4, s, -4, t, -4, u)); // 1st '*' = -4, 2nd '*' = 14
 
 	printf(" ---- Return : %d\n", ft_printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s", -4, n, -4, o, -4, p,-4, q,-4, r,-4, s,-4, t,-4, u)); // 1st '*' = -4, 2nd '*' = 14
@@ -106,9 +123,15 @@ printf(" ---- Return : %d\n", printf("%.*s, %.*s, %.*s, %.*s, %.*s, %.*s, %.*s, 
 	printf("\n");
 */
 	//printf x
-	unsigned int a = 123123;
+	//int a = d;
+/*
 	printf("--retrn : %d \n",printf("1 :%6x ", a));
 	printf("--retrn : %d \n",ft_printf("1 :%6x ", a));
+	printf("--retrn : %d \n",printf("1 :%6X ", a));
+	printf("--retrn : %d \n",ft_printf("1 :%6X ", a));
+*/
+	//printf("--retrn : %d \n",printf("1 :%*.*u ", -1, -4,4282621618));
+	//printf("--retrn : %d \n",printf("1 :%*.*u ", -1, -4, 4282621618));
 	/*
 	printf("1 :%3.4x\n", a);
 	ft_printf("1 :%3.4x\n", a);
