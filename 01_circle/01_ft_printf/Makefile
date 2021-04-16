@@ -6,13 +6,13 @@
 #    By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 14:41:35 by chan              #+#    #+#              #
-#    Updated: 2021/04/10 16:27:05 by chan             ###   ########.fr        #
+#    Updated: 2021/04/10 17:00:05 by chan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= printf.a
+NAME		= libftprintf.a
 
-SRC 		= ft_printf.c \
+SRCS 		= ft_printf.c \
 		  ft_libft.c \
 		  ft_c_printf.c \
 		  ft_d_printf.c \
