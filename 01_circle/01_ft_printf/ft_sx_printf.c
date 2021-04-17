@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/16 20:01:09 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/17 22:45:22 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	x_num_len(long long *num, t_point *pt)
 		pt->sign = 1;
 		*num = -(*num);
 	}
-	if (*num == 0)
-		return (1);
 	if (!pt->pre_ast && pt->pre > 0)
 		pt->zero = 0;
+	if (*num == 0)
+		return (1);
 	while (_num)
 	{
 		_num = _num / 16;

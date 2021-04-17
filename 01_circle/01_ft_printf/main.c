@@ -26,13 +26,17 @@ int main()
 	char	*u = "-0";
 
 
+	//printf("---- return : %d\n", printf("%08.5d", 0));
+	//printf("---- return : %d\n", ft_printf("%08.5d", 0));
+	printf("---- return : %d\n", printf("%% *.5i 42 == |% *.5i|", 4, 42));
+	printf("---- return : %d\n", ft_printf("%% *.5i 42 == |% *.5i|", 4, 42));
 	//printf(" --- Return : %d\n", printf("%-*p", 8, (void *)1));
 	//printf(" --- Return : %d\n", ft_printf("%-*p", 8, (void *)1));
-
+/*
 	printf(" --- Return : %d\n", printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960));
 
 	printf(" --- Return : %d\n", ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960, 11, (void *)209590960, 11, 209590960));
-				/*
+		*/		/*
 	printf(" --- Return : %d\n", printf("%0*.*u", 3, -1, i));
 	printf(" --- Return : %d\n", ft_printf("%0*.*u",3, -1, i));
 */	/*

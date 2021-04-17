@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/04/13 20:35:46 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/18 01:35:47 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void		t_point_init(t_point* pt)
 	pt->sign = 0;
 	pt->padding = 0;
 	pt->pre_ast = 0;
+	pt->space = 0;
 }
 
 void		printf_zs(char val, int width)
@@ -53,7 +54,7 @@ int		compare_val(int a, int b, int fl)
 	return (a);
 }
 
-int		width_atoi(const char *s, int *i)
+int		width_atoi(const char *s, int *i, t_point *pt)
 {
 	long long	ret;
 	long long	tmp;
@@ -61,6 +62,11 @@ int		width_atoi(const char *s, int *i)
 
 	ret = 0;
 	of_cnt = 0;
+	while (s[*i] == ' ')
+	{
+		pt->space++;
+		(*i)++;
+	}
 	while (ft_isdigit(s[*i]))
 	{
 		tmp = ret * 10 + (s[*i] - '0');

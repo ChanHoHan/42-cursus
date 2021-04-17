@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:31:26 by chan              #+#    #+#             */
-/*   Updated: 2021/04/16 19:50:07 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/18 00:32:26 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	num_len(long long *num, t_point *pt)
 		*num = -(*num);
 	}
 	_num = *num;
-	if (*num == 0)
-		return (1);
 	if (!pt->pre_ast && pt->pre > 0)
 		pt->zero = 0;
+	if (*num == 0)
+		return (1);
 	while (_num)
 	{
 		_num = _num / 10;
@@ -44,7 +44,7 @@ void	putnbr_printf(long long num)
 
 	quo = num / 10;
 	rem = num % 10;
-	if (num > 10)
+	if (num >= 10)
 		putnbr_printf(quo);
 	ch = '0' + rem;
 	write(1, &ch, 1);
