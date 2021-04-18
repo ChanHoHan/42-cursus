@@ -28,8 +28,8 @@ int main()
 
 	//printf("---- return : %d\n", printf("%08.5d", 0));
 	//printf("---- return : %d\n", ft_printf("%08.5d", 0));
-	printf("---- return : %d\n", printf("%% *.5i 42 == |% *.5i|", 4, 42));
-	printf("---- return : %d\n", ft_printf("%% *.5i 42 == |% *.5i|", 4, 42));
+	printf("---- return : %d\n", printf("%3.5p", (void*)20));
+	printf("---- return : %d\n", ft_printf("%3.5p", (void*)20));
 	//printf(" --- Return : %d\n", printf("%-*p", 8, (void *)1));
 	//printf(" --- Return : %d\n", ft_printf("%-*p", 8, (void *)1));
 /*

@@ -6,7 +6,7 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 17:30:24 by chan              #+#    #+#             */
-/*   Updated: 2021/04/16 20:46:47 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/18 21:08:56 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,37 @@ int	p_num_len(unsigned long long	num)
 	return (len);
 }
 
+void		p_printf_print(t_point *pt, unsigned long long p)
+{
+	write(1, "0x", 2);
+	if (pt->padding > 0)
+		printf_zs('0', pt->padding);
+	if (!(pt->dot && !p))
+		p_printf_to_hex(p);
+}
+
 int		p_printf(t_point *pt, unsigned long long p)
 {
 	int	len;
 
-	len = p_num_len(p) + 2;
-	if (pt->width > len)
+	if (!p && pt->dot)
+		len = 2;
+	else
+		len = p_num_len(p) + 2;
+	pt->padding = pt->pre - len + 2;
+	if (pt->minus)
 	{
-		if (pt->minus)
-		{
-			write(1, "0x", 2);
-			p_printf_to_hex(p);
-			printf_zs(' ', pt->width - len);
-		}
-		else
-		{
-			printf_zs(' ' , pt->width - len);
-			write(1, "0x", 2);
-			p_printf_to_hex(p);
-		}
-		len = pt->width;
+		p_printf_print(pt, p);
+		printf_zs(' ', pt->width - len);
 	}
 	else
 	{
-		write (1, "0x", 2);
-		p_printf_to_hex(p);
+		printf_zs(' ' , pt->width - len);
+		p_printf_print(pt, p);
 	}
+	if (pt->width > len)
+		len = pt->width;
+	if (pt->pre > len - 2)
+		len = pt->pre + 2;
 	return (len);
 }

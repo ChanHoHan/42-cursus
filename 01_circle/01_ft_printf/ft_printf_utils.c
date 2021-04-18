@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/04/18 01:35:47 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/18 20:25:35 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void		printf_zs(char val, int width)
 	int	i;
 
 	i = -1;
+	if (width <= 0)
+		return ;
 	while (++i < width)
 		write(1, &val, 1);
 }

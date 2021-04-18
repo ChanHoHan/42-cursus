@@ -6,13 +6,13 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:43:48 by chan              #+#    #+#             */
-/*   Updated: 2021/04/15 21:49:33 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/18 13:59:45 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		s_printf_parsing(t_point *pt, char *s)
+int		s_printf_parsing(t_point *pt, char *s, char ch)
 {
 	int	len;
 	int	i;
@@ -26,11 +26,11 @@ int		s_printf_parsing(t_point *pt, char *s)
 		if (pt->minus)
 		{
 			write(1, s, len);
-			printf_zs(' ', pt->width - len);
+			printf_zs(ch, pt->width - len);
 		}
 		else
 		{
-			printf_zs(' ', pt->width - len);
+			printf_zs(ch, pt->width - len);
 			write(1, s, len);
 		}
 		len = pt->width;
@@ -42,9 +42,13 @@ int		s_printf_parsing(t_point *pt, char *s)
 
 int		s_printf(t_point *pt, char *s)
 {
+	char ch;
+
 	if (!s)
 		s = "(null)";
-	if (pt->width < 0)
-		pt->width = -pt->width;
-	return (s_printf_parsing(pt, s));
+	if (pt->zero)
+		ch = '0';
+	else
+		ch = ' ';
+	return (s_printf_parsing(pt, s, ch));
 }
