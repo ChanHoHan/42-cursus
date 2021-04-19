@@ -6,13 +6,13 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 15:42:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/19 15:53:32 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/19 16:37:59 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	num_len(long long *num, t_point *pt, int val)
+int	num_len(long long *num, t_point *pt, int d_val)
 {
 	int		len;
 	long long	_num;
@@ -30,8 +30,59 @@ int	num_len(long long *num, t_point *pt, int val)
 		return (1);
 	while (_num)
 	{
-		_num = _num / val;
+		_num = _num / d_val;
 		len++;
 	}
 	return (len);
+}
+
+void	num_padding_operation(t_point *pt, long long num, int *len, const char* p_val)
+{
+	if (pt->sign)
+		write (1, "-", 1);
+	if (pt->padding > 0)
+		printf_zs('0', pt->padding);
+	if (!num && !pt->pre_ast && pt->dot && pt->pre <= 0)
+	{
+		if (!pt->width)
+			(*len)--;
+		return ;
+	}
+	if (pt->pre_ast && !pt->pre && !num)
+	{
+		(*len)--;
+		return ;
+	}
+	putnbr_printf(num, ft_strlen(p_val), p_val);
+}
+
+void	putnbr_printf(long long num, int d_val, const char* p_val)
+{
+	long long	quo;
+	long long	rem;
+	char		ch;
+
+	quo = num / d_val;
+	rem = num % d_val;
+	if (num >= d_val)
+		putnbr_printf(quo, d_val, p_val);
+	ch = '0' + rem;
+	write(1, &p_val[rem], 1);
+}
+
+void	width_operation(t_point *pt, int *len, long long num)
+{
+	if (!num && !pt->pre_ast && pt->dot && pt->pre <= 0)
+	{
+		printf_zs(' ', pt->width);
+		if (pt->width > 0)
+			*len += pt->width - *len;
+		return;
+	}
+	if (!pt->minus && !num && !pt->pre && pt->pre_ast)
+		pt->width++;
+	if (pt->width - *len <= 0)
+		return ;
+	printf_zs(' ', pt->width - *len);
+	*len += pt->width - *len;
 }
