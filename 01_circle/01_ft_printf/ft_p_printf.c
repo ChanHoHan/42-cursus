@@ -6,23 +6,11 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 17:30:24 by chan              #+#    #+#             */
-/*   Updated: 2021/04/18 21:08:56 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/19 16:48:25 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void		p_printf_to_hex(unsigned long long p)
-{
-	unsigned long long	quo;
-	unsigned long long	rem;
-
-	quo = p / 16;
-	rem = p % 16;
-	if (p > 15)
-		p_printf_to_hex(quo);
-	write(1, &SMALL[rem], 1);
-}
 
 int	p_num_len(unsigned long long	num)
 {
@@ -45,7 +33,7 @@ void		p_printf_print(t_point *pt, unsigned long long p)
 	if (pt->padding > 0)
 		printf_zs('0', pt->padding);
 	if (!(pt->dot && !p))
-		p_printf_to_hex(p);
+		putnbr_printf(p, 16, SMALL);
 }
 
 int		p_printf(t_point *pt, unsigned long long p)

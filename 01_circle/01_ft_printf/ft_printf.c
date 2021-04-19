@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/19 15:52:39 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/19 18:56:18 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@ int		make_format(char type, t_point *pt, va_list ap)
 	if (pt->pre_ast && pt->pre >= 0)
 		pt->zero = 0;
 	if (type == '%')
-		return(c_printf(pt, '%'));
+		return (c_printf(pt, '%'));
 	else if (type == 'c')
-		return(c_printf(pt, va_arg(ap, int)));
+		return (c_printf(pt, va_arg(ap, int)));
 	else if (type == 's')
-		return(s_printf(pt, va_arg(ap, char *)));
+		return (s_printf(pt, va_arg(ap, char *)));
 	else if (type == 'p')
-		return(p_printf(pt, va_arg(ap, unsigned long long)));
+		return (p_printf(pt, va_arg(ap, unsigned long long)));
 	else if (type == 'd' || type == 'i')
-		return(d_printf(pt, va_arg(ap, int)));
+		return (diuxX_printf(pt, va_arg(ap, int), 10, NUMBER));
 	else if (type == 'u')
-		return(u_printf(pt, va_arg(ap, unsigned int)));
+		return (diuxX_printf(pt, va_arg(ap, unsigned int), 10, NUMBER));
 	else if (type == 'X')
-		return(X_printf(pt, va_arg(ap, unsigned int)));
+		return (diuxX_printf(pt, va_arg(ap, unsigned int), 16, LARGE));
 	else if (type == 'x')
-		return(x_printf(pt, va_arg(ap, unsigned int)));
+		return (diuxX_printf(pt, va_arg(ap, unsigned int), 16, SMALL));
 	return (1);
 }
 
-void		format_check(const char *format, int *i, t_point *pt, va_list ap)
+void	format_check(const char *format, int *i, t_point *pt, va_list ap)
 {
 	if (format[*i] == '-')
 		pt->minus = 1;
@@ -67,7 +67,7 @@ void		format_check(const char *format, int *i, t_point *pt, va_list ap)
 	(*i)++;
 }
 
-void		print_format(int *rd_size, char ch)
+void	print_format(int *rd_size, char ch)
 {
 	write(1, &ch, 1);
 	++(*rd_size);
@@ -75,8 +75,8 @@ void		print_format(int *rd_size, char ch)
 
 int		ft_printf_core(const char *format, va_list ap)
 {
-	int	i;
-	int	rd_size;
+	int		i;
+	int		rd_size;
 	t_point	pt;
 
 	i = -1;
