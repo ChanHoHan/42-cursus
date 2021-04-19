@@ -32,7 +32,7 @@ void		p_printf_print(t_point *pt, unsigned long long p)
 	write(1, "0x", 2);
 	if (pt->padding > 0)
 		printf_zs('0', pt->padding);
-	if (!(pt->dot && !p))
+	if (!(pt->dot && !p) || pt->pre < 0)
 		putnbr_printf(p, 16, SMALL);
 }
 
@@ -40,7 +40,7 @@ int		p_printf(t_point *pt, unsigned long long p)
 {
 	int	len;
 
-	if (!p && pt->dot)
+	if (!p && pt->dot && pt->pre >=0)
 		len = 2;
 	else
 		len = p_num_len(p) + 2;

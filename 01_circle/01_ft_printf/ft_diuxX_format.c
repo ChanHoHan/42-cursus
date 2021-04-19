@@ -24,7 +24,7 @@ int		num_len(long long *num, t_point *pt, int d_val)
 		*num = -(*num);
 	}
 	_num = *num;
-	if (!pt->pre_ast && pt->pre > 0)
+	if (!pt->pre_ast && pt->dot && pt->pre >= 0)
 		pt->zero = 0;
 	if (*num == 0)
 		return (1);
