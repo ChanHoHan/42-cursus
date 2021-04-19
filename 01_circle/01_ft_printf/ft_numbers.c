@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_diuxX_format.c                                  :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 15:42:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/19 21:19:25 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:14:07 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		num_len(long long *num, t_point *pt, int d_val)
+int		num_len(t_point *pt, long long *num, int d_val)
 {
-	int	len;
+	long long	l_num;
+	int			len;
 
-	long long _num;
 	len = 0;
 	if (*num < 0)
 	{
 		pt->sign = 1;
 		*num = -(*num);
 	}
-	_num = *num;
+	l_num = *num;
 	if (!pt->pre_ast && pt->dot && pt->pre >= 0)
 		pt->zero = 0;
 	if (*num == 0)
 		return (1);
-	while (_num)
+	while (l_num)
 	{
-		_num = _num / d_val;
+		l_num = l_num / d_val;
 		len++;
 	}
 	return (len);
 }
 
-void	num_padding_operation(t_point *pt, long long num, int *len, const char *p_val)
+void	num_padding_operation(t_point *pt, long long num, \
+		int *len, const char *p_val)
 {
 	if (pt->sign)
 		write(1, "-", 1);
@@ -87,13 +88,13 @@ void	width_operation(t_point *pt, int *len, long long num)
 	*len += pt->width - *len;
 }
 
-int		diuxX_printf(t_point *pt, long long num, int val, const char *p)
+int		numbers_printf(t_point *pt, long long num, int val, const char *p)
 {
 	int	len;
 
 	if (pt->pre < 0 && !pt->pre_ast)
 		pt->width = -pt->pre;
-	len = num_len(&num, pt, val);
+	len = num_len(pt, &num, val);
 	if (pt->pre > len)
 		pt->padding = pt->pre - len;
 	if (pt->sign == 1)

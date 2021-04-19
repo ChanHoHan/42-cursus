@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/19 18:56:18 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:19:06 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int		make_format(char type, t_point *pt, va_list ap)
 	else if (type == 'p')
 		return (p_printf(pt, va_arg(ap, unsigned long long)));
 	else if (type == 'd' || type == 'i')
-		return (diuxX_printf(pt, va_arg(ap, int), 10, NUMBER));
+		return (numbers_printf(pt, va_arg(ap, int), 10, NUMBER));
 	else if (type == 'u')
-		return (diuxX_printf(pt, va_arg(ap, unsigned int), 10, NUMBER));
+		return (numbers_printf(pt, va_arg(ap, unsigned int), 10, NUMBER));
 	else if (type == 'X')
-		return (diuxX_printf(pt, va_arg(ap, unsigned int), 16, LARGE));
+		return (numbers_printf(pt, va_arg(ap, unsigned int), 16, LARGE));
 	else if (type == 'x')
-		return (diuxX_printf(pt, va_arg(ap, unsigned int), 16, SMALL));
+		return (numbers_printf(pt, va_arg(ap, unsigned int), 16, SMALL));
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 21:44:10 by chan              #+#    #+#             */
-/*   Updated: 2021/04/18 20:25:35 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:14:35 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int		is_type(char ch)
 {
-	return (ch == 'c' || ch == 's' || ch == 'p' || ch == 'd' ||
-			ch == 'i' || ch == 'u' || ch == 'x' || ch == 'X' ||
-			ch == '%');
+	return (ch == 'c' || ch == 's' || ch == 'p' || ch == 'd' || ch == 'i' ||
+			ch == 'u' || ch == 'x' || ch == 'X' || ch == '%');
 }
 
-void		t_point_init(t_point* pt)
+void	t_point_init(t_point *pt)
 {
 	pt->minus = 0;
 	pt->zero = 0;
@@ -32,7 +31,7 @@ void		t_point_init(t_point* pt)
 	pt->space = 0;
 }
 
-void		printf_zs(char val, int width)
+void	printf_zs(char val, int width)
 {
 	int	i;
 

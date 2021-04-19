@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 14:42:49 by chan              #+#    #+#             */
-/*   Updated: 2021/03/16 18:39:38 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:00:01 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	c_printf_core(t_point *pt)
 {
-		if (pt->zero)
-			printf_zs('0', pt->width - 1);
-		else
-			printf_zs(' ', pt->width - 1);
+	if (pt->zero)
+		printf_zs('0', pt->width - 1);
+	else
+		printf_zs(' ', pt->width - 1);
 }
 
-int	c_printf(t_point *pt, int ch)
+int		c_printf(t_point *pt, int ch)
 {
-	int		rtn;
+	int	rtn;
 
 	rtn = 1;
 	if (pt->width > 1)

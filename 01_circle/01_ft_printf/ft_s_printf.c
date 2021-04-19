@@ -6,17 +6,17 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:43:48 by chan              #+#    #+#             */
-/*   Updated: 2021/04/18 13:59:45 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:15:04 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		s_printf_parsing(t_point *pt, char *s, char ch)
+int	s_printf_parsing(t_point *pt, char *s, char ch)
 {
 	int	len;
 	int	i;
-	
+
 	i = 0;
 	len = ft_strlen(s);
 	if (pt->dot && pt->pre >= 0)
@@ -40,9 +40,9 @@ int		s_printf_parsing(t_point *pt, char *s, char ch)
 	return (len);
 }
 
-int		s_printf(t_point *pt, char *s)
+int	s_printf(t_point *pt, char *s)
 {
-	char ch;
+	char	ch;
 
 	if (!s)
 		s = "(null)";

@@ -6,15 +6,15 @@
 /*   By: chan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 17:30:24 by chan              #+#    #+#             */
-/*   Updated: 2021/04/19 16:48:25 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/20 01:14:41 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	p_num_len(unsigned long long	num)
+int		p_num_len(unsigned long long num)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	if (!num)
@@ -27,7 +27,7 @@ int	p_num_len(unsigned long long	num)
 	return (len);
 }
 
-void		p_printf_print(t_point *pt, unsigned long long p)
+void	p_printf_print(t_point *pt, unsigned long long p)
 {
 	write(1, "0x", 2);
 	if (pt->padding > 0)
@@ -40,7 +40,7 @@ int		p_printf(t_point *pt, unsigned long long p)
 {
 	int	len;
 
-	if (!p && pt->dot && pt->pre >=0)
+	if (!p && pt->dot && pt->pre >= 0)
 		len = 2;
 	else
 		len = p_num_len(p) + 2;
@@ -52,7 +52,7 @@ int		p_printf(t_point *pt, unsigned long long p)
 	}
 	else
 	{
-		printf_zs(' ' , pt->width - len);
+		printf_zs(' ', pt->width - len);
 		p_printf_print(pt, p);
 	}
 	if (pt->width > len)
