@@ -6,7 +6,7 @@
 /*   By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 18:56:41 by chan              #+#    #+#             */
-/*   Updated: 2021/04/18 01:35:53 by chan             ###   ########.fr       */
+/*   Updated: 2021/04/19 15:52:39 by chan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		ft_printf_core(const char *format, va_list ap)
 		{
 			i++;
 			t_point_init(&pt);
-			while (format[i] && !is_type(format[i]))// 널 일때만 i--
+			while (format[i] && !is_type(format[i]))
 				format_check(format, &i, &pt, ap);
 			if (pt.space)
 				printf_zs(' ', pt.space);
