@@ -6,7 +6,7 @@
 #    By: chan <chan@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 14:41:35 by chan              #+#    #+#              #
-#    Updated: 2021/04/10 17:00:05 by chan             ###   ########.fr        #
+#    Updated: 2021/04/19 18:55:51 by chan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,10 @@ NAME		= libftprintf.a
 SRCS 		= ft_printf.c \
 		  ft_libft.c \
 		  ft_c_printf.c \
-		  ft_d_printf.c \
 		  ft_p_printf.c \
 		  ft_s_printf.c \
-		  ft_u_printf.c \
-		  ft_lx_printf.c \
-		  ft_sx_printf.c \
-		  ft_printf_utils.c
+		  ft_printf_utils.c \
+		  ft_diuxX_format.c \
 
 OBJS					= $(SRCS:%.c=%.o)
 
