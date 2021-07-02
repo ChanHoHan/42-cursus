@@ -57,13 +57,7 @@ RUN wget https://wordpress.org/latest.tar.gz; \
 	    cp /wp-config.php /var/www/html/wordpress;
 
 #db
-RUN service mysql start; \
-	    mysql < /var/www/html/phpmyadmin/sql/create_tables.sql -u root --skip-password; \
-
-	    mysql -e "CREATE USER IF NOT EXISTS 'chan'@'localhost' IDENTIFIED BY 'chan';\
-	    CREATE DATABASE IF NOT EXISTS phpmyadmin; \
-	    CREATE DATABASE IF NOT EXISTS wordpress; \
-	    GRANT ALL PRIVILEGES ON wordpress.* TO 'chan'@'localhost' WITH GRANT OPTION;"
+RUN service mysql start;mysql < /var/www/html/phpmyadmin/sql/create_tables.sql -u root --skip-password;mysql -e "CREATE USER IF NOT EXISTS 'chan'@'localhost' IDENTIFIED BY 'chan';CREATE DATABASE IF NOT EXISTS phpmyadmin;CREATE DATABASE IF NOT EXISTS wordpress;GRANT ALL PRIVILEGES ON wordpress.* TO 'chan'@'localhost' WITH GRANT OPTION;"
 
 RUN chown -R www-data:www-data /var/www/html/
 
